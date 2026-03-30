@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Plan Validation System</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 20px; background: #f8f9fa; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1, h2 { color: #2c3e50; }
+        .card { border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #ccc; }
+        .dimension-row { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px;}
+        input[type="number"] { padding: 5px; width: 100px; }
+        .badge { padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+        .bg-green { background: #d4edda; color: #155724; }
+        .bg-red { background: #f8d7da; color: #721c24; }
+        .bg-yellow { background: #fff3cd; color: #856404; }
+        .bg-gray { background: #e2e3e5; color: #383d41; }
+        .decision { font-size: 1.5em; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; margin-top: 20px;}
+        .APPROVED_FOR_DESIGN { background: #d4edda; color: #155724; border: 2px solid #28a745;}
+        .NEEDS_CORRECTION { background: #fff3cd; color: #856404; border: 2px solid #ffc107;}
+        .NEEDS_SITE_REMEASUREMENT { background: #f8d7da; color: #721c24; border: 2px solid #dc3545;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Kitchen Plan Validator (Phase 3)</h1>
+    
+    <!-- STEP 1: UPLOAD -->
+    <div class="card" id="upload-section">
+        <h2>1. Upload Kitchen Plan Image</h2>
+        <input type="file" id="planImage" accept="image/png, image/jpeg, application/pdf">
+        <button onclick="uploadPlan()" id="uploadBtn">Analyze Plan</button>
+        <p id="uploadStatus"></p>
+    </div>
+
+    <!-- STEP 2: SITE MEASUREMENTS -->
+    <div class="card" id="measurement-section" style="display: none;">
+        <h2>2. Site Measurements Checklist</h2>
+        <p>The AI extracted these dimensions. Please enter the REAL SITE measurements.</p>
+        <div id="dimensionsList"></div>
+        <button onclick="submitMeasurements()" style="margin-top: 15px;">Run Validation</button>
+    </div>
+
+    <!-- STEP 3: REPORT -->
+    <div class="card" id="report-section" style="display: none;">
+        <h2>3. Validation Report</h2>
+        <div id="finalDecision" class="decision"></div>
+        <ul id="globalRisks" style="color: red; font-weight: bold;"></ul>
+        
+        <h3>Dimension Comparisons</h3>
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="border-bottom: 2px solid #ddd;">
+                    <th>Dimension</th>
+                    <th>Plan (Expected)</th>
+                    <th>Site (Actual)</th>
+                    <th>Difference</th>
+                    <th>Status</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody id="reportTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    let currentProjectId = null;
+    let extractedDimensions = [];
+
+    async function uploadPlan() {
+        const fileInput = document.getElementById('planImage');
+        if (!fileInput.files[0]) {
+            alert('Please select a file first.');
+            return;
+        }
+
+        const btn = document.getElementById('uploadBtn');
+        const status = document.getElementById('uploadStatus');
+        btn.disabled = true;
+        status.innerText = "Uploading and analyzing with Vision AI...";
+
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+
+        try {
+            // Call Spring Boot Backend
+            const response = await fetch('http://localhost:8080/api/projects/upload-plan', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            
+            if (response.ok) {
+                currentProjectId = data.projectId;
+                extractedDimensions = data.agentData.dimensions;
+                
+                status.innerText = `Analysis complete! Found ${extractedDimensions.length} dimensions.`;
+                renderMeasurementForm();
+            } else {
+                status.innerText = "Error: " + data.error;
+            }
+        } catch (e) {
+            status.innerText = "Connection error. Is backend running?";
+        }
+        btn.disabled = false;
+    }
+
+    function renderMeasurementForm() {
+        document.getElementById('measurement-section').style.display = 'block';
+        const list = document.getElementById('dimensionsList');
+        list.innerHTML = '';
+
+        extractedDimensions.forEach(dim => {
+            const row = document.createElement('div');
+            row.className = 'dimension-row';
+            
+            let expectedText = dim.isUnreadable ? 
+                `<span class="badge bg-gray">UNREADABLE</span>` : 
+                `${dim.expectedValue} ${dim.unit}`;
+
+            row.innerHTML = `
+                <div>
+                    <strong>${dim.label}</strong><br>
+                    <small>Expected: ${expectedText}</small>
+                </div>
+                <div>
+                    <input type="number" id="input_${dim.id}" placeholder="Actual (mm)"> mm
+                </div>
+            `;
+            list.appendChild(row);
+        });
+    }
+
+    async function submitMeasurements() {
+        const siteMeasurements = extractedDimensions.map(dim => {
+            const val = document.getElementById(`input_${dim.id}`).value;
+            return {
+                id: dim.id,
+                label: dim.label,
+                actualValue: val ? parseFloat(val) : null,
+                unit: 'mm'
+            };
+        }).filter(m => m.actualValue !== null); // Drop empties to simulate MISSING
+
+        const payload = {
+            planDimensions: extractedDimensions,
+            siteMeasurements: siteMeasurements
+        };
+
+        try {
+            const response = await fetch(`http://localhost:8080/api/projects/${currentProjectId}/validation/compare`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const report = await response.json();
+            renderReport(report);
+        } catch (e) {
+            alert('Failed to run validation.');
+        }
+    }
+
+    function renderReport(report) {
+        document.getElementById('report-section').style.display = 'block';
+        
+        const decisionEl = document.getElementById('finalDecision');
+        decisionEl.innerText = report.finalDecision.replace(/_/g, ' ');
+        decisionEl.className = `decision ${report.finalDecision}`;
+
+        const risksEl = document.getElementById('globalRisks');
+        risksEl.innerHTML = report.globalRisks.map(r => `<li>⚠️ ${r}</li>`).join('');
+
+        const tbody = document.getElementById('reportTableBody');
+        tbody.innerHTML = '';
+
+        report.comparisons.forEach(comp => {
+            const tr = document.createElement('tr');
+            tr.style.borderBottom = '1px solid #eee';
+            
+            let badgeClass = 'bg-gray';
+            if(comp.status === 'MATCHED') badgeClass = 'bg-green';
+            if(comp.status === 'MISMATCHED') badgeClass = 'bg-red';
+            if(comp.status === 'MISSING') badgeClass = 'bg-yellow';
+
+            tr.innerHTML = `
+                <td style="padding: 10px;">${comp.label}</td>
+                <td>${comp.expected !== null ? comp.expected : 'UNREADABLE'}</td>
+                <td>${comp.actual !== null ? comp.actual : 'MISSING'}</td>
+                <td>${comp.difference !== null ? comp.difference + ' mm' : '-'}</td>
+                <td><span class="badge ${badgeClass}">${comp.status}</span></td>
+                <td><small>${comp.riskNote || ''}</small></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+</script>
+
+</body>
+</html>

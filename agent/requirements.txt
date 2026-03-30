@@ -1,0 +1,9 @@
+fastapi==0.128.8
+uvicorn==0.40.0
+pydantic==2.12.5
+loguru==0.7.3
+python-multipart==0.0.22
+# Runtime requirement: Python 3.10+
+# To be un-commented when implementing real vision:
+# google-genai==1.62.0
+# langchain-google-genai==4.2.0
