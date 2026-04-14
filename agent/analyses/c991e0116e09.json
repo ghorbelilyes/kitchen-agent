@@ -1,0 +1,188 @@
+{
+  "id": "c991e0116e09",
+  "filename": "TYPE 4 RDC 1 2 3 (2).jpg",
+  "analyzed_at": "2026-04-03T18:16:44.668026",
+  "analysis": {
+    "layout_type": "Single wall (linear) kitchen - elevation view",
+    "visible_elements": [
+      "Upper cabinet HE8072 (x2)",
+      "Upper cabinet HE4072",
+      "Upper cabinet HE4572",
+      "Lower cabinet BE5072",
+      "Lower cabinet BE4572",
+      "Range hood HOOD762-13",
+      "Evier (sink)",
+      "Wall filler left side",
+      "Countertop"
+    ],
+    "dimensions": [
+      {
+        "id": "D1",
+        "label": "Overall upper width (top line)",
+        "expectedValue": 2706,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D2",
+        "label": "Right return/wall segment",
+        "expectedValue": 354,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D3",
+        "label": "Left portion upper split",
+        "expectedValue": 1517,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D4",
+        "label": "Right portion upper split",
+        "expectedValue": 1543,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D5",
+        "label": "Total cabinet run width",
+        "expectedValue": 3060,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D6",
+        "label": "Left wall filler",
+        "expectedValue": 35,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D7",
+        "label": "Left cabinet section width",
+        "expectedValue": 1215,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D8",
+        "label": "Middle cabinet section width",
+        "expectedValue": 765,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D9",
+        "label": "Right-middle cabinet section width",
+        "expectedValue": 610,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D10",
+        "label": "Right end cabinet section width",
+        "expectedValue": 435,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D11",
+        "label": "Left combined run (filler + left section)",
+        "expectedValue": 2010,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D12",
+        "label": "Right-middle lower section",
+        "expectedValue": 600,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D13",
+        "label": "Right end lower section",
+        "expectedValue": 450,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D14",
+        "label": "Small top-left gap/filler at cabinet line",
+        "expectedValue": 22,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D15",
+        "label": "Upper cabinet zone height (left)",
+        "expectedValue": 510,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D16",
+        "label": "Total wall height (left)",
+        "expectedValue": 2405,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D17",
+        "label": "Floor to upper cabinet bottom (left)",
+        "expectedValue": 1873,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D18",
+        "label": "Upper cabinet zone height (right)",
+        "expectedValue": 508,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D19",
+        "label": "Floor to upper cabinet bottom (right)",
+        "expectedValue": 1882,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D20",
+        "label": "Dimension near sink/lower cabinet area",
+        "expectedValue": 136,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D21",
+        "label": "Countertop depth",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D22",
+        "label": "Cabinet depth (upper)",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      }
+    ],
+    "risky_areas": [
+      "Left wall filler is only 35mm — any wall irregularity will eliminate the filler and cause fitment issues",
+      "Height from floor to upper cabinet bottom differs left (1873) vs right (1882) — 9mm discrepancy suggests floor or ceiling is not level; needs site verification",
+      "22mm gap/filler at upper-left cabinet junction — extremely tight, risk of misalignment",
+      "Sink (Evier) area: the 136mm dimension context is unclear — verify whether this is a sink offset, reveal, or plumbing clearance",
+      "Hood HOOD762-13 positioned between upper cabinets HE4072 and HE4572 — verify hood width fits between cabinets and proper ventilation clearance exists",
+      "No countertop depth dimension visible — must be confirmed on site",
+      "No appliance dimensions (cooktop under hood) confirmed — risk of wrong cutout",
+      "Total run 3060mm vs sum of segments (35+1215+765+610+435 = 3060) checks out, but wall must be verified ≥ 3060mm",
+      "Right return wall 354mm — tight space, confirm no obstruction or door swing conflict",
+      "Upper and lower cabinet widths appear mismatched in some sections — verify alignment between uppers and lowers",
+      "Plan note states all dimensions subject to site verification — no dimension should be treated as final without on-site confirmation"
+    ]
+  }
+}

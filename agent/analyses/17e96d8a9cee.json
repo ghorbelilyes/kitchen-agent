@@ -1,0 +1,113 @@
+{
+  "id": "17e96d8a9cee",
+  "filename": "TYPE 1 RDC 1 2 3 (1).jpg",
+  "analyzed_at": "2026-04-04T21:18:10.848415",
+  "analysis": {
+    "layout_type": "L-shaped",
+    "visible_elements": [
+      "base cabinets",
+      "sink",
+      "corner cabinet",
+      "cooktop",
+      "tall unit",
+      "countertop"
+    ],
+    "risky_areas": [
+      "corner cabinet transition may require precise filler/tolerance",
+      "sink plumbing position must align with sink base zone",
+      "cooktop placement on short return may create tight working clearance",
+      "angled/right-side wall can cause fitting and countertop templating risk",
+      "no clearly readable wall height or upper cabinet heights on this view"
+    ],
+    "dimensions": [
+      {
+        "id": "wall_left_total",
+        "label": "Left wall total length",
+        "expectedValue": 2780,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_top_total",
+        "label": "Top/back wall total length",
+        "expectedValue": 2570,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_right_total",
+        "label": "Right wall total length",
+        "expectedValue": 2835,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_height",
+        "label": "Wall height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "wall"
+      },
+      {
+        "id": "upper_cabinets_height",
+        "label": "Upper cabinets height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "backsplash_zone_height",
+        "label": "Backsplash zone height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "countertop_height",
+        "label": "Countertop height from floor",
+        "expectedValue": 920,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "height"
+      },
+      {
+        "id": "plumbing_sink_from",
+        "label": "Plumbing under sink FROM",
+        "expectedValue": 710,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "plumbing_sink_to",
+        "label": "Plumbing under sink TO",
+        "expectedValue": 1925,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "hood_electrical_from",
+        "label": "Hood electrical FROM",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "electrical"
+      },
+      {
+        "id": "hood_electrical_to",
+        "label": "Hood electrical TO",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "electrical"
+      }
+    ]
+  }
+}

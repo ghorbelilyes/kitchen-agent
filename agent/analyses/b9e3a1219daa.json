@@ -1,0 +1,204 @@
+{
+  "id": "b9e3a1219daa",
+  "filename": "TYPE 4 RDC 1 2 3 (2).jpg",
+  "analyzed_at": "2026-04-03T18:17:12.432590",
+  "analysis": {
+    "layout_type": "Single wall (linear) kitchen",
+    "visible_elements": [
+      "Upper cabinet HE8072 (x2)",
+      "Upper cabinet HE4072",
+      "Upper cabinet HE4572",
+      "Lower cabinet BE5072",
+      "Lower cabinet BE4572",
+      "Range hood HOOD762-13",
+      "Evier (sink)",
+      "Countertop",
+      "Wall elevation view",
+      "Floor plan view"
+    ],
+    "dimensions": [
+      {
+        "id": "D01",
+        "label": "Total upper wall run width",
+        "expectedValue": 2706,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D02",
+        "label": "Right end panel / filler width (top)",
+        "expectedValue": 354,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D03",
+        "label": "Left section width (top)",
+        "expectedValue": 1517,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D04",
+        "label": "Right section width (top)",
+        "expectedValue": 1543,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D05",
+        "label": "Overall cabinet run width",
+        "expectedValue": 3060,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D06",
+        "label": "Left filler / offset from wall",
+        "expectedValue": 35,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D07",
+        "label": "Left base cabinet section width",
+        "expectedValue": 1215,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D08",
+        "label": "Center section width (sink/cooktop zone)",
+        "expectedValue": 765,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D09",
+        "label": "Right-center section width",
+        "expectedValue": 610,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D10",
+        "label": "Far right section width",
+        "expectedValue": 435,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D11",
+        "label": "Left combined base run",
+        "expectedValue": 2010,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D12",
+        "label": "Right-center base section",
+        "expectedValue": 600,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D13",
+        "label": "Far right base section",
+        "expectedValue": 450,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D14",
+        "label": "Sink dimension / cutout",
+        "expectedValue": 136,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D15",
+        "label": "Upper cabinet zone height (left small segment)",
+        "expectedValue": 22,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D16",
+        "label": "Upper cabinet height zone (left)",
+        "expectedValue": 510,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D17",
+        "label": "Total wall height (left)",
+        "expectedValue": 2405,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D18",
+        "label": "Floor to bottom of upper cabinets (left)",
+        "expectedValue": 1873,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D19",
+        "label": "Upper cabinet height zone (right)",
+        "expectedValue": 508,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D20",
+        "label": "Floor to bottom of upper cabinets (right)",
+        "expectedValue": 1882,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D21",
+        "label": "Countertop depth",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D22",
+        "label": "Base cabinet height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D23",
+        "label": "Wall total height (right side)",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D24",
+        "label": "Hood width (HOOD762-13)",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      }
+    ],
+    "risky_areas": [
+      "Left filler only 35mm — very tight tolerance, wall must be perfectly straight or filler will not cover gap",
+      "Upper cabinet heights differ left (510mm + 22mm) vs right (508mm) — potential alignment issue",
+      "Floor-to-upper-cabinet heights differ: 1873mm (left) vs 1882mm (right) — floor may not be level, shim or adjustment needed",
+      "Sink (Evier) placement in left section — plumbing point must align with 1215mm zone",
+      "Hood (HOOD762-13) centered over cooktop — verify electrical and duct point alignment",
+      "Dimension 136mm near sink area is ambiguous — could be sink offset or drain position, needs confirmation",
+      "No filler shown on right side — if wall is not square, last cabinet (BE4572 / HE4572) may not sit flush",
+      "Countertop depth not dimensioned — must be confirmed before production",
+      "Base cabinet height not dimensioned — confirm with site floor-to-countertop measurement",
+      "Sum check: 35 + 1215 + 765 + 610 + 435 = 3060mm matches D05, but 2706 + 354 = 3060mm — the 354mm right section purpose (tall unit, end panel, or appliance housing) must be clarified",
+      "Appliance openings (dishwasher, oven) not explicitly shown — confirm if integrated or freestanding",
+      "No window or door positions indicated — must verify no obstructions on this wall"
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "id": "7ff00e40486e",
+  "filename": "TYPE 1 RDC 1 2 3.jpg",
+  "analyzed_at": "2026-04-03T18:26:16.385465",
+  "analysis": {
+    "layout_type": "L-shaped with angled corner wall",
+    "visible_elements": [
+      "Corner base cabinet A01 (ETG 40 EX / SE 90/100 COIN)",
+      "Base cabinet A11 (ETG 50 EX / SE 90/105 COIN)",
+      "Base cabinet A21 (ETG 50 EX / SE 90/105 COIN)",
+      "Base cabinet A31 (ETG 55 EX / SE 90/105 CO)",
+      "Tall unit with oven and drawer 1 (ETG 25 / FOUR / TIR 60 EX)",
+      "Tall unit with oven and drawer 2 (ETG 25 / FOUR / TIR 60 EX)",
+      "Sink (EVIER)",
+      "Appliance DE4D720 (dishwasher area)",
+      "Appliance DE4D725",
+      "Range hood (HOTTE)",
+      "Cooking zone",
+      "Countertop",
+      "Upper cabinets / wall units (S-LINE)"
+    ],
+    "dimensions": [
+      {
+        "id": "D01",
+        "label": "Top wall total length",
+        "expectedValue": 2570,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D02",
+        "label": "Left angled section return width",
+        "expectedValue": 675,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D03",
+        "label": "Top wall segment 1 (left sub-section)",
+        "expectedValue": 645,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D04",
+        "label": "Top wall segment 2 (center – sink area)",
+        "expectedValue": 1215,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D05",
+        "label": "Top wall segment 3 (right)",
+        "expectedValue": 710,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D06",
+        "label": "Angled / diagonal wall length",
+        "expectedValue": 2835,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D07",
+        "label": "Bottom horizontal return segment",
+        "expectedValue": 620,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D08",
+        "label": "Right wall – top gap or filler",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D09",
+        "label": "Right wall – small filler / panel 1",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D10",
+        "label": "Right wall – panel / spacer 2",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D11",
+        "label": "Right wall – upper section (possible hood/cabinet zone)",
+        "expectedValue": 965,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D12",
+        "label": "Right wall – panel / spacer 3",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D13",
+        "label": "Right wall – small gap / filler 4",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D14",
+        "label": "Right wall – appliance / cabinet width (standard 600)",
+        "expectedValue": 600,
+        "unit": "mm",
+        "isUnreadable": false
+      },
+      {
+        "id": "D15",
+        "label": "Right wall – small gap / filler 5",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D16",
+        "label": "Right wall – cooking zone section",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D17",
+        "label": "Right wall – panel / spacer 6",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D18",
+        "label": "Right wall – tall units section",
+        "expectedValue": 1295,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D19",
+        "label": "Right wall – end panel / spacer 7",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D20",
+        "label": "Gap between tall units",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true
+      },
+      {
+        "id": "D21",
+        "label": "Small clearance near tall units",
+        "expectedValue": 10,
+        "unit": "mm",
+        "isUnreadable": true
+      }
+    ],
+    "risky_areas": [
+      "Angled/diagonal wall (2835 mm) – non-standard angle; requires precise site measurement and custom filler cuts",
+      "Corner cabinet A01 (COIN 90/100) – verify actual corner angle is exactly 90° and accessible clearance for door swing",
+      "Sink area between DE4D720 and DE4D725 within 1215 mm section – verify plumbing rough-in aligns with plan",
+      "Two tall oven units placed side by side (ETG 25 / FOUR / TIR 60 EX) – check door swing clearance and heat dissipation gap",
+      "Right wall vertical dimensions are largely unreadable – high risk of production error without full site verification",
+      "No visible filler allowances near wall ends – if walls are not perfectly straight, cabinets may not fit",
+      "620 mm return wall section is tight – verify sufficient door/drawer opening clearance",
+      "Dishwasher (DE4D720) adjacent to sink – confirm drain and water supply positions match",
+      "Range hood (HOTTE) position relative to cooking zone – verify ducting route and mounting height",
+      "Corner-to-corner squareness between top wall and right wall must be verified on site",
+      "Countertop depth not dimensioned on plan – must be confirmed before worktop production",
+      "Wall straightness along 2570 mm run not indicated – tolerance/shimming not accounted for"
+    ]
+  }
+}

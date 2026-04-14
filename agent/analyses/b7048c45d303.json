@@ -1,0 +1,116 @@
+{
+  "id": "b7048c45d303",
+  "filename": "TYPE 4 RDC 1 2 3 (2).jpg",
+  "analyzed_at": "2026-04-04T21:54:52.007017",
+  "analysis": {
+    "layout_type": "Straight",
+    "visible_elements": [
+      "upper cabinets",
+      "base cabinets",
+      "sink (Evier)",
+      "range hood",
+      "countertop",
+      "filler/panel",
+      "left side wall",
+      "right side wall"
+    ],
+    "risky_areas": [
+      "sink plumbing zone is not fully explicit and must be rechecked on site",
+      "hood electrical position depends on exact hood centerline",
+      "end fillers near left/right walls may be required",
+      "upper cabinet heights are not clearly labeled",
+      "appliance clearances around the hood and sink area are critical"
+    ],
+    "dimensions": [
+      {
+        "id": "wall_left_total_length",
+        "label": "Left wall total length",
+        "expectedValue": 2405,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_right_total_length",
+        "label": "Right wall total length",
+        "expectedValue": 1882,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_top_total_length",
+        "label": "Top/back wall total length",
+        "expectedValue": 3060,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_height",
+        "label": "Wall height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "wall"
+      },
+      {
+        "id": "upper_cabinets_height",
+        "label": "Upper cabinets height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "backsplash_zone_height",
+        "label": "Backsplash zone height",
+        "expectedValue": 510,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "height"
+      },
+      {
+        "id": "countertop_height_from_floor",
+        "label": "Countertop height from floor",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "plumbing_under_sink_from",
+        "label": "Plumbing under sink FROM",
+        "expectedValue": 35,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "plumbing_under_sink_to",
+        "label": "Plumbing under sink TO",
+        "expectedValue": 1250,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "hood_electrical_from",
+        "label": "Hood electrical FROM",
+        "expectedValue": 2010,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      },
+      {
+        "id": "hood_electrical_to",
+        "label": "Hood electrical TO",
+        "expectedValue": 2610,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      }
+    ],
+    "_selected_model": "openai-codex/gpt-5.4-mini"
+  }
+}

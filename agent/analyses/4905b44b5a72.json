@@ -1,0 +1,114 @@
+{
+  "id": "4905b44b5a72",
+  "filename": "TYPE 4 RDC 1 2 3 (2).jpg",
+  "analyzed_at": "2026-04-04T21:42:53.826950",
+  "analysis": {
+    "layout_type": "Straight",
+    "visible_elements": [
+      "base cabinets",
+      "upper cabinets",
+      "sink",
+      "hood",
+      "backsplash/wall space",
+      "right-side tall/end panel"
+    ],
+    "risky_areas": [
+      "Wall height dimensions appear inconsistent across left and right sides",
+      "Sink plumbing position is inferred from cabinet span, not explicitly marked as plumbing points",
+      "Hood electrical position is inferred from hood zone, not explicitly marked as electrical points",
+      "Very small left filler space (35 mm) may be insufficient if wall is not straight",
+      "Right-side end clearance/filler must be verified on site before production"
+    ],
+    "dimensions": [
+      {
+        "id": "wall_left_total_length",
+        "label": "Left wall total length",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "wall"
+      },
+      {
+        "id": "wall_right_total_length",
+        "label": "Right wall total length",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "wall"
+      },
+      {
+        "id": "wall_back_total_length",
+        "label": "Top/back wall total length",
+        "expectedValue": 3060,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_height",
+        "label": "Wall height",
+        "expectedValue": 2881,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "upper_cabinets_height",
+        "label": "Upper cabinets height",
+        "expectedValue": 510,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "height"
+      },
+      {
+        "id": "backsplash_zone_height",
+        "label": "Backsplash zone height (distance between upper cabinets bottom and countertop)",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "countertop_height",
+        "label": "Countertop height from floor",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "plumbing_from",
+        "label": "Plumbing under sink FROM",
+        "expectedValue": 35,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "plumbing_to",
+        "label": "Plumbing under sink TO",
+        "expectedValue": 1250,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "hood_electrical_from",
+        "label": "Hood electrical FROM",
+        "expectedValue": 2010,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      },
+      {
+        "id": "hood_electrical_to",
+        "label": "Hood electrical TO",
+        "expectedValue": 2610,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      }
+    ],
+    "_selected_model": "openai-codex/gpt-5.4"
+  }
+}

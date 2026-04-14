@@ -9,54 +9,199 @@
         .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         h1, h2 { color: #2c3e50; }
         .card { border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-        button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
         button:hover { background: #0056b3; }
-        button:disabled { background: #ccc; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
         .dimension-row { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px;}
-        input[type="number"] { padding: 5px; width: 100px; }
+        input[type="number"] { padding: 8px; width: 120px; border: 1px solid #ccc; border-radius: 4px; }
+        select { padding: 8px; min-height: 40px; border: 1px solid #ccc; border-radius: 4px; background: white; }
         .badge { padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; }
         .bg-green { background: #d4edda; color: #155724; }
         .bg-red { background: #f8d7da; color: #721c24; }
         .bg-yellow { background: #fff3cd; color: #856404; }
         .bg-gray { background: #e2e3e5; color: #383d41; }
+        .bg-blue { background: #d1ecf1; color: #0c5460; }
+        .bg-purple { background: #e8daef; color: #6c3483; }
         .decision { font-size: 1.5em; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; margin-top: 20px;}
         .APPROVED_FOR_DESIGN { background: #d4edda; color: #155724; border: 2px solid #28a745;}
         .NEEDS_CORRECTION { background: #fff3cd; color: #856404; border: 2px solid #ffc107;}
         .NEEDS_SITE_REMEASUREMENT { background: #f8d7da; color: #721c24; border: 2px solid #dc3545;}
+
+        /* Analysis Summary Blocks */
+        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        @media (max-width: 700px) { .analysis-grid { grid-template-columns: 1fr; } }
+        .analysis-block { border: 1px solid #ddd; border-radius: 8px; padding: 0; overflow: hidden; }
+        .analysis-block h3 { margin: 0; padding: 12px 16px; font-size: 0.95em; display: flex; align-items: center; gap: 8px; }
+        .analysis-block ul { margin: 0; padding: 0; list-style: none; max-height: 320px; overflow-y: auto; }
+        .analysis-block ul li { padding: 10px 16px; border-top: 1px solid #eee; font-size: 0.9em; line-height: 1.45; }
+        .analysis-block ul li:hover { background: #f8f9fa; }
+        .block-elements h3 { background: #e8f4fd; color: #1a5276; border-bottom: 2px solid #aed6f1; }
+        .block-risks h3 { background: #fdecea; color: #922b21; border-bottom: 2px solid #f5b7b1; }
+        .block-risks li { color: #641e16; }
+        .risk-index { display: inline-block; background: #e74c3c; color: #fff; border-radius: 50%; width: 22px; height: 22px; text-align: center; line-height: 22px; font-size: 0.75em; font-weight: bold; margin-right: 6px; flex-shrink: 0; }
+        .plan-preview { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
+        .plan-preview-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .plan-preview-header strong { color: #2c3e50; }
+        .plan-preview-header a { color: #007bff; text-decoration: none; font-size: 0.9em; }
+        .plan-preview-frame { padding: 12px; background: #f6f7f9; }
+        .plan-preview-image { display: block; width: 100%; max-height: 460px; object-fit: contain; background: #fff; border-radius: 6px; }
+        .plan-preview-pdf { width: 100%; height: 460px; border: 0; border-radius: 6px; background: #fff; }
+        .plan-preview-empty { padding: 14px 16px; border: 1px solid #ffe69c; border-radius: 8px; background: #fff3cd; color: #856404; }
+
+        /* Spinner CSS */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            border-left-color: #007bff;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        #loadingOverlay {
+            display: none; align-items: center;
+            background: #e9ecef; padding: 15px; border-radius: 5px;
+            color: #495057; font-weight: bold; margin-top: 15px;
+        }
+
+        /* ===== CATEGORY GROUP ===== */
+        .cat-group { margin-bottom: 18px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; }
+        .cat-header {
+            padding: 10px 16px; font-size: 0.95em; font-weight: 600;
+            display: flex; align-items: center; gap: 8px; margin: 0;
+        }
+        .cat-wall .cat-header { background: #e8f4fd; color: #1a5276; border-bottom: 2px solid #aed6f1; }
+        .cat-height .cat-header { background: #fef9e7; color: #7d6608; border-bottom: 2px solid #f9e79f; }
+        .cat-plumbing .cat-header { background: #d1ecf1; color: #0c5460; border-bottom: 2px solid #86cfda; }
+        .cat-electrical .cat-header { background: #e8daef; color: #6c3483; border-bottom: 2px solid #c39bd3; }
+        .cat-body { padding: 0; }
+        .cat-body .dimension-row { padding: 10px 16px; margin: 0; border-bottom: 1px solid #f0f0f0; }
+        .cat-body .dimension-row:last-child { border-bottom: none; }
+
+        .interval-badge { 
+            display: inline-block; padding: 3px 10px; border-radius: 20px;
+            font-size: 0.8em; font-weight: 600; letter-spacing: 0.3px;
+        }
+        .interval-plumbing { background: #d1ecf1; color: #0c5460; }
+        .interval-electrical { background: #e8daef; color: #6c3483; }
+
+        /* ===== HISTORY TABLE ===== */
+        .history-table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
+        .history-table th { padding: 12px 10px; background: #f1f3f5; border-bottom: 2px solid #ddd; font-size: 0.9em; color: #495057; }
+        .history-table td { padding: 10px; border-bottom: 1px solid #eee; font-size: 0.9em; vertical-align: middle; }
+        .history-table tr:hover { background: #f8f9fa; }
+        .history-table .filename-cell { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; color: #2c3e50; }
+
+        .btn-sm { padding: 6px 12px; font-size: 13px; border-radius: 4px; border: none; cursor: pointer; font-weight: 500; transition: all 0.2s; }
+        .btn-view { background: #17a2b8; color: white; }
+        .btn-view:hover { background: #138496; }
+        .btn-delete { background: #dc3545; color: white; }
+        .btn-delete:hover { background: #c82333; }
+        .btn-refresh { background: #6c757d; color: white; margin-left: 10px; font-size: 14px; }
+        .btn-refresh:hover { background: #5a6268; }
+        .history-header { display: flex; align-items: center; justify-content: space-between; }
+        .history-empty { text-align: center; padding: 30px; color: #999; font-style: italic; }
+        .action-btns { display: flex; gap: 6px; }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1000;
+            justify-content: center; align-items: center;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: white; border-radius: 10px; padding: 30px;
+            max-width: 800px; width: 90%; max-height: 85vh; overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 12px; right: 16px;
+            background: none; border: none; font-size: 24px;
+            cursor: pointer; color: #999; padding: 5px;
+        }
+        .modal-close:hover { color: #333; }
+        .modal-title { margin-top: 0; color: #2c3e50; font-size: 1.3em; padding-right: 30px; }
+        .modal-meta { color: #6c757d; font-size: 0.85em; margin-bottom: 20px; }
+        .dim-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .dim-table th { padding: 8px 10px; background: #f1f3f5; border-bottom: 2px solid #ddd; font-size: 0.85em; text-align: left; }
+        .dim-table td { padding: 8px 10px; border-bottom: 1px solid #eee; font-size: 0.85em; }
+        .upload-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr) auto; gap: 12px; align-items: end; }
+        .form-field { display: flex; flex-direction: column; gap: 6px; }
+        .form-field label { font-size: 0.9em; font-weight: 600; color: #495057; }
+        .model-hint { margin: 10px 0 0; font-size: 0.9em; color: #6c757d; }
+        @media (max-width: 700px) {
+            .upload-grid { grid-template-columns: 1fr; }
+            .upload-grid button { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Kitchen Plan Validator (Phase 3)</h1>
+    <h1>Kitchen Plan Validator</h1>
     
     <!-- STEP 1: UPLOAD -->
     <div class="card" id="upload-section">
         <h2>1. Upload Kitchen Plan Image</h2>
-        <input type="file" id="planImage" accept="image/png, image/jpeg, application/pdf">
-        <button onclick="uploadPlan()" id="uploadBtn">Analyze Plan</button>
-        <p id="uploadStatus"></p>
+        <div class="upload-grid">
+            <div class="form-field">
+                <label for="planImage">Plan file</label>
+                <input type="file" id="planImage" accept="image/png, image/jpeg, application/pdf">
+            </div>
+            <div class="form-field">
+                <label for="modelSelect">Pi model</label>
+                <select id="modelSelect">
+                    <option value="">Pi default</option>
+                </select>
+            </div>
+            <button onclick="uploadPlan()" id="uploadBtn">Analyze Plan</button>
+        </div>
+        <p id="modelHint" class="model-hint">Loading models from Pi...</p>
+        <div id="loadingOverlay">
+            <div class="spinner"></div>
+            <span id="loadingText">Analyzing image with Vision AI... (This takes 10-20 seconds)</span>
+        </div>
+        <p id="uploadStatus" style="font-weight: bold; color: #28a745; display: none; margin-top: 15px;"></p>
+        <p id="uploadError" style="font-weight: bold; color: #dc3545; display: none; margin-top: 15px;"></p>
     </div>
 
-    <!-- STEP 2: SITE MEASUREMENTS -->
+    <!-- ANALYSIS RESULTS: Visible Elements + Risky Areas -->
+    <div id="analysis-section" style="display: none; margin-bottom: 20px;">
+        <div id="currentPlanPreview"></div>
+        <div class="analysis-grid">
+            <div class="analysis-block block-elements">
+                <h3>🔍 Visible Elements</h3>
+                <ul id="visibleElementsList"></ul>
+            </div>
+            <div class="analysis-block block-risks">
+                <h3>🚨 Risky Areas <span id="riskCount" class="badge bg-red" style="margin-left: auto;"></span></h3>
+                <ul id="riskyAreasList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 2: SITE MEASUREMENTS (grouped by category) -->
     <div class="card" id="measurement-section" style="display: none;">
         <h2>2. Site Measurements Checklist</h2>
-        <p>The AI extracted these dimensions. Please enter the REAL SITE measurements.</p>
+        <p>Verify these summarized dimensions against the REAL SITE. Enter actual values.</p>
         <div id="dimensionsList"></div>
-        <button onclick="submitMeasurements()" style="margin-top: 15px;">Run Validation</button>
+        <button onclick="submitMeasurements()" style="margin-top: 15px; width: 100%;">Run Factory Validation</button>
     </div>
 
     <!-- STEP 3: REPORT -->
     <div class="card" id="report-section" style="display: none;">
         <h2>3. Validation Report</h2>
         <div id="finalDecision" class="decision"></div>
-        <ul id="globalRisks" style="color: red; font-weight: bold;"></ul>
-        
+        <ul id="globalRisks" style="color: #721c24; font-weight: bold; background: #f8d7da; padding: 15px; border-radius: 5px; list-style-position: inside;"></ul>
         <h3>Dimension Comparisons</h3>
         <table style="width: 100%; border-collapse: collapse; text-align: left;">
             <thead>
-                <tr style="border-bottom: 2px solid #ddd;">
-                    <th>Dimension</th>
+                <tr style="border-bottom: 2px solid #ddd; background: #f1f3f5;">
+                    <th style="padding: 10px;">Dimension</th>
                     <th>Plan (Expected)</th>
                     <th>Site (Actual)</th>
                     <th>Difference</th>
@@ -67,91 +212,341 @@
             <tbody id="reportTableBody"></tbody>
         </table>
     </div>
+
+    <!-- ===== ANALYSIS HISTORY ===== -->
+    <div class="card" id="history-section">
+        <div class="history-header">
+            <h2 style="margin: 0;">📋 Analysis History</h2>
+            <button class="btn-sm btn-refresh" onclick="loadHistory()">↻ Refresh</button>
+        </div>
+        <div id="historyContent">
+            <div class="history-empty">Loading...</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== VIEW ANALYSIS MODAL ===== -->
+<div class="modal-overlay" id="analysisModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <h2 class="modal-title" id="modalTitle">Analysis Details</h2>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div id="modalBody">Loading...</div>
+    </div>
 </div>
 
 <script>
+    const BACKEND_BASE_URL = 'http://localhost:8080';
     let currentProjectId = null;
     let extractedDimensions = [];
+    let availableModels = [];
 
-    async function uploadPlan() {
-        const fileInput = document.getElementById('planImage');
-        if (!fileInput.files[0]) {
-            alert('Please select a file first.');
-            return;
+    // Category config
+    const CATEGORIES = {
+        wall:       { icon: '🧱', label: 'Wall Dimensions',     cssClass: 'cat-wall' },
+        height:     { icon: '📐', label: 'Heights',             cssClass: 'cat-height' },
+        plumbing:   { icon: '🔧', label: 'Plumbing Interval',   cssClass: 'cat-plumbing' },
+        electrical: { icon: '⚡', label: 'Electrical Interval',  cssClass: 'cat-electrical' },
+    };
+
+    // ===== Load startup data =====
+    document.addEventListener('DOMContentLoaded', () => {
+        loadHistory();
+        loadModelOptions();
+    });
+
+    // ===== Group dimensions by category =====
+    function groupByCategory(dimensions) {
+        const groups = {};
+        (dimensions || []).forEach(dim => {
+            const cat = dim.category || 'other';
+            if (!groups[cat]) groups[cat] = [];
+            groups[cat].push(dim);
+        });
+        return groups;
+    }
+
+    function formatModelLabel(modelValue) {
+        const model = availableModels.find(item => item.value === modelValue);
+        return model ? `${model.name || model.model} [${model.provider}]` : modelValue;
+    }
+
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function buildUploadFileUrl(filename) {
+        if (!filename) return '';
+        return `${BACKEND_BASE_URL}/api/projects/uploads/${encodeURIComponent(filename)}`;
+    }
+
+    function isPdfFile(filename) {
+        return typeof filename === 'string' && filename.toLowerCase().endsWith('.pdf');
+    }
+
+    function createPlanPreviewHtml(fileUrl, displayName, sourceName) {
+        const safeName = escapeHtml(displayName || 'Analyzed file');
+        const previewSource = sourceName || displayName || '';
+
+        if (!fileUrl) {
+            return `<div class="plan-preview-empty">Analyzed file preview unavailable for this record.</div>`;
         }
 
+        if (isPdfFile(previewSource)) {
+            return `
+                <div class="plan-preview" style="margin-bottom: 20px;">
+                    <div class="plan-preview-header">
+                        <strong>Analyzed File</strong>
+                        <a href="${fileUrl}" target="_blank" rel="noopener">Open full file</a>
+                    </div>
+                    <div class="plan-preview-frame">
+                        <object data="${fileUrl}" type="application/pdf" class="plan-preview-pdf">
+                            <div class="plan-preview-empty">
+                                PDF preview unavailable.
+                                <a href="${fileUrl}" target="_blank" rel="noopener">Open the PDF</a>.
+                            </div>
+                        </object>
+                    </div>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="plan-preview" style="margin-bottom: 20px;">
+                <div class="plan-preview-header">
+                    <strong>Analyzed File</strong>
+                    <a href="${fileUrl}" target="_blank" rel="noopener">Open full image</a>
+                </div>
+                <div class="plan-preview-frame">
+                    <img src="${fileUrl}" alt="Analyzed plan: ${safeName}" class="plan-preview-image" loading="lazy">
+                </div>
+            </div>
+        `;
+    }
+
+    function renderCurrentPlanPreview(fileUrl, displayName, sourceName) {
+        const previewContainer = document.getElementById('currentPlanPreview');
+        previewContainer.innerHTML = createPlanPreviewHtml(fileUrl, displayName, sourceName);
+        document.getElementById('analysis-section').style.display = 'block';
+    }
+
+    function getRecordPreviewUrl(record) {
+        if (!record) return '';
+        if (record.image_filename) return buildUploadFileUrl(record.image_filename);
+        if (record.filename) return buildUploadFileUrl(record.filename);
+        return '';
+    }
+
+    async function loadModelOptions() {
+        const select = document.getElementById('modelSelect');
+        const hint = document.getElementById('modelHint');
+
+        select.disabled = true;
+        hint.style.color = '#6c757d';
+        hint.innerText = 'Loading models from Pi...';
+
+        try {
+            const response = await fetch('http://localhost:8080/api/projects/models');
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || data.detail || 'Failed to load Pi models.');
+
+            availableModels = Array.isArray(data.models) ? data.models : [];
+
+            if (availableModels.length === 0) {
+                select.innerHTML = '<option value="">Pi default</option>';
+                select.disabled = false;
+                hint.style.color = '#856404';
+                hint.innerText = 'No Pi models with configured access were found. Uploads will use the Pi default model.';
+                return;
+            }
+
+            const defaultModel = data.defaultModel || availableModels[0].value;
+            select.innerHTML = '';
+
+            availableModels.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.value;
+                option.textContent = `${model.name || model.model} [${model.provider}]`;
+                option.selected = model.value === defaultModel;
+                select.appendChild(option);
+            });
+
+            select.disabled = false;
+            hint.style.color = '#28a745';
+            hint.innerText = `Loaded ${availableModels.length} models from Pi. Default: ${formatModelLabel(defaultModel)}.`;
+        } catch (e) {
+            availableModels = [];
+            select.innerHTML = '<option value="">Pi default</option>';
+            select.disabled = false;
+            hint.style.color = '#856404';
+            hint.innerText = 'Could not load Pi models. Uploads will use the Pi default model.';
+        }
+    }
+
+    // ===== UPLOAD =====
+    async function uploadPlan() {
+        const fileInput = document.getElementById('planImage');
+        if (!fileInput.files[0]) { alert('Please select an image file first.'); return; }
+        const selectedModel = document.getElementById('modelSelect').value;
+
         const btn = document.getElementById('uploadBtn');
+        const loading = document.getElementById('loadingOverlay');
         const status = document.getElementById('uploadStatus');
+        const errorMsg = document.getElementById('uploadError');
+        
         btn.disabled = true;
-        status.innerText = "Uploading and analyzing with Vision AI...";
+        loading.style.display = 'flex';
+        status.style.display = 'none';
+        errorMsg.style.display = 'none';
+        document.getElementById('measurement-section').style.display = 'none';
+        document.getElementById('report-section').style.display = 'none';
+        document.getElementById('analysis-section').style.display = 'none';
+        document.getElementById('currentPlanPreview').innerHTML = '';
 
         const formData = new FormData();
         formData.append('file', fileInput.files[0]);
+        if (selectedModel) {
+            formData.append('model', selectedModel);
+        }
 
         try {
-            // Call Spring Boot Backend
             const response = await fetch('http://localhost:8080/api/projects/upload-plan', {
-                method: 'POST',
-                body: formData
+                method: 'POST', body: formData
             });
             const data = await response.json();
             
             if (response.ok) {
                 currentProjectId = data.projectId;
-                extractedDimensions = data.agentData.dimensions;
-                
-                status.innerText = `Analysis complete! Found ${extractedDimensions.length} dimensions.`;
-                renderMeasurementForm();
+                extractedDimensions = Array.isArray(data.agentData?.dimensions) ? data.agentData.dimensions : [];
+                const previewUrl = data.imageUrl || buildUploadFileUrl(data.imageFilename || fileInput.files[0].name);
+                renderCurrentPlanPreview(previewUrl, fileInput.files[0].name, data.imageFilename || fileInput.files[0].name);
+                renderAnalysisBlocks(
+                    data.agentData?.visible_elements || [],
+                    data.agentData?.risky_areas || []
+                );
+                loadHistory();
+
+                if (extractedDimensions.length > 0) {
+                    const modelMessage = selectedModel ? ` using ${formatModelLabel(selectedModel)}` : '';
+                    status.innerText = `✅ Analysis complete${modelMessage}! Found ${extractedDimensions.length} dimensions.`;
+                    status.style.display = 'block';
+                    renderMeasurementForm();
+                } else {
+                    errorMsg.innerText = "⚠️ Error: The AI could not find structured dimensions in this image.";
+                    errorMsg.style.display = 'block';
+                }
             } else {
-                status.innerText = "Error: " + data.error;
+                errorMsg.innerText = "⚠️ Error: " + (data.error || "File size too large or server rejected request.");
+                errorMsg.style.display = 'block';
             }
         } catch (e) {
-            status.innerText = "Connection error. Is backend running?";
+            errorMsg.innerText = "⚠️ Connection error. Please make sure the Java Backend (8080) and Python Agent (8000) are running.";
+            errorMsg.style.display = 'block';
+        } finally {
+            loading.style.display = 'none';
+            btn.disabled = false;
         }
-        btn.disabled = false;
     }
 
+    function renderAnalysisBlocks(visibleElements, riskyAreas) {
+        document.getElementById('analysis-section').style.display = 'block';
+
+        const elemList = document.getElementById('visibleElementsList');
+        elemList.innerHTML = '';
+        if (visibleElements.length === 0) {
+            elemList.innerHTML = '<li style="color:#999; font-style:italic;">No elements detected</li>';
+        } else {
+            visibleElements.forEach(el => {
+                const li = document.createElement('li');
+                li.innerHTML = `📦 ${el}`;
+                elemList.appendChild(li);
+            });
+        }
+
+        const riskList = document.getElementById('riskyAreasList');
+        riskList.innerHTML = '';
+        const riskCountEl = document.getElementById('riskCount');
+        riskCountEl.innerText = riskyAreas.length;
+
+        if (riskyAreas.length === 0) {
+            riskList.innerHTML = '<li style="color:#27ae60; font-style:italic;">✅ No risks detected</li>';
+            riskCountEl.className = 'badge bg-green';
+        } else {
+            riskCountEl.className = 'badge bg-red';
+            riskyAreas.forEach((risk, idx) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="risk-index">${idx + 1}</span> ${risk}`;
+                riskList.appendChild(li);
+            });
+        }
+    }
+
+    // ===== Measurement form grouped by category =====
     function renderMeasurementForm() {
         document.getElementById('measurement-section').style.display = 'block';
         const list = document.getElementById('dimensionsList');
         list.innerHTML = '';
 
-        extractedDimensions.forEach(dim => {
-            const row = document.createElement('div');
-            row.className = 'dimension-row';
-            
-            let expectedText = dim.isUnreadable ? 
-                `<span class="badge bg-gray">UNREADABLE</span>` : 
-                `${dim.expectedValue} ${dim.unit}`;
+        const groups = groupByCategory(extractedDimensions);
+        const order = ['wall', 'height', 'plumbing', 'electrical'];
+        // Add any unknown categories at end
+        Object.keys(groups).forEach(k => { if (!order.includes(k)) order.push(k); });
 
-            row.innerHTML = `
-                <div>
-                    <strong>${dim.label}</strong><br>
-                    <small>Expected: ${expectedText}</small>
-                </div>
-                <div>
-                    <input type="number" id="input_${dim.id}" placeholder="Actual (mm)"> mm
-                </div>
-            `;
-            list.appendChild(row);
+        order.forEach(cat => {
+            if (!groups[cat]) return;
+            const cfg = CATEGORIES[cat] || { icon: '📏', label: cat, cssClass: '' };
+            const isInterval = (cat === 'plumbing' || cat === 'electrical');
+
+            const group = document.createElement('div');
+            group.className = `cat-group ${cfg.cssClass}`;
+
+            let headerHtml = `<div class="cat-header">${cfg.icon} ${cfg.label}`;
+            if (isInterval) {
+                headerHtml += ` <span class="interval-badge interval-${cat}">FROM → TO</span>`;
+            }
+            headerHtml += `</div>`;
+            group.innerHTML = headerHtml;
+
+            const body = document.createElement('div');
+            body.className = 'cat-body';
+
+            groups[cat].forEach(dim => {
+                const row = document.createElement('div');
+                row.className = 'dimension-row';
+                
+                let expectedText = dim.isUnreadable
+                    ? `<span class="badge bg-gray">UNREADABLE</span>`
+                    : `<strong>${dim.expectedValue}</strong> ${dim.unit}`;
+
+                row.innerHTML = `
+                    <div>
+                        <strong style="font-size: 1em; color: #0056b3;">${dim.label}</strong><br>
+                        <small>Plan: ${expectedText}</small>
+                    </div>
+                    <div>
+                        <input type="number" id="input_${dim.id}" placeholder="Actual (mm)"> mm
+                    </div>
+                `;
+                body.appendChild(row);
+            });
+
+            group.appendChild(body);
+            list.appendChild(group);
         });
     }
 
     async function submitMeasurements() {
         const siteMeasurements = extractedDimensions.map(dim => {
             const val = document.getElementById(`input_${dim.id}`).value;
-            return {
-                id: dim.id,
-                label: dim.label,
-                actualValue: val ? parseFloat(val) : null,
-                unit: 'mm'
-            };
-        }).filter(m => m.actualValue !== null); // Drop empties to simulate MISSING
+            return { id: dim.id, label: dim.label, actualValue: val ? parseFloat(val) : null, unit: 'mm' };
+        }).filter(m => m.actualValue !== null);
 
-        const payload = {
-            planDimensions: extractedDimensions,
-            siteMeasurements: siteMeasurements
-        };
+        const payload = { planDimensions: extractedDimensions, siteMeasurements };
 
         try {
             const response = await fetch(`http://localhost:8080/api/projects/${currentProjectId}/validation/compare`, {
@@ -174,7 +569,12 @@
         decisionEl.className = `decision ${report.finalDecision}`;
 
         const risksEl = document.getElementById('globalRisks');
-        risksEl.innerHTML = report.globalRisks.map(r => `<li>⚠️ ${r}</li>`).join('');
+        if (report.globalRisks && report.globalRisks.length > 0) {
+            risksEl.style.display = 'block';
+            risksEl.innerHTML = report.globalRisks.map(r => `<li>${r}</li>`).join('');
+        } else {
+            risksEl.style.display = 'none';
+        }
 
         const tbody = document.getElementById('reportTableBody');
         tbody.innerHTML = '';
@@ -182,22 +582,189 @@
         report.comparisons.forEach(comp => {
             const tr = document.createElement('tr');
             tr.style.borderBottom = '1px solid #eee';
-            
             let badgeClass = 'bg-gray';
             if(comp.status === 'MATCHED') badgeClass = 'bg-green';
             if(comp.status === 'MISMATCHED') badgeClass = 'bg-red';
             if(comp.status === 'MISSING') badgeClass = 'bg-yellow';
 
             tr.innerHTML = `
-                <td style="padding: 10px;">${comp.label}</td>
-                <td>${comp.expected !== null ? comp.expected : 'UNREADABLE'}</td>
-                <td>${comp.actual !== null ? comp.actual : 'MISSING'}</td>
+                <td style="padding: 10px; font-weight: 500;">${comp.label}</td>
+                <td>${comp.expected !== null ? comp.expected : '<span class="badge bg-gray">UNREADABLE</span>'}</td>
+                <td>${comp.actual !== null ? comp.actual : '<span class="badge bg-yellow">MISSING</span>'}</td>
                 <td>${comp.difference !== null ? comp.difference + ' mm' : '-'}</td>
                 <td><span class="badge ${badgeClass}">${comp.status}</span></td>
                 <td><small>${comp.riskNote || ''}</small></td>
             `;
             tbody.appendChild(tr);
         });
+        
+        document.getElementById('report-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== HISTORY =====
+    async function loadHistory() {
+        const container = document.getElementById('historyContent');
+        container.innerHTML = '<div class="history-empty">Loading...</div>';
+
+        try {
+            const response = await fetch('http://localhost:8080/api/analyses');
+            if (!response.ok) throw new Error('Server error');
+            const analyses = await response.json();
+
+            if (!analyses || analyses.length === 0) {
+                container.innerHTML = '<div class="history-empty">No analyses yet. Upload a kitchen plan to get started.</div>';
+                return;
+            }
+
+            let html = `
+                <table class="history-table">
+                    <thead><tr>
+                        <th>#</th><th>File Name</th><th>Layout</th><th>Dims</th><th>Risks</th><th>Date</th><th>Actions</th>
+                    </tr></thead><tbody>
+            `;
+
+            analyses.forEach((item, idx) => {
+                const date = new Date(item.analyzed_at).toLocaleString();
+                const riskBadge = item.risks_count > 0
+                    ? `<span class="badge bg-red">${item.risks_count}</span>`
+                    : `<span class="badge bg-green">0</span>`;
+
+                html += `
+                    <tr>
+                        <td>${idx + 1}</td>
+                        <td class="filename-cell" title="${item.filename}">${item.filename}</td>
+                        <td><span class="badge bg-gray">${item.layout_type || '—'}</span></td>
+                        <td>${item.dimensions_count}</td>
+                        <td>${riskBadge}</td>
+                        <td><small>${date}</small></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="btn-sm btn-view" onclick="viewAnalysis('${item.id}')">👁 View</button>
+                                <button class="btn-sm btn-delete" onclick="deleteAnalysis('${item.id}', '${item.filename.replace(/'/g, "\\'")}')">🗑 Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        } catch (e) {
+            container.innerHTML = '<div class="history-empty">⚠️ Could not load history. Make sure the backend is running.</div>';
+        }
+    }
+
+    // ===== View Analysis Modal (grouped) =====
+    async function viewAnalysis(analysisId) {
+        const modal = document.getElementById('analysisModal');
+        const modalBody = document.getElementById('modalBody');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMeta = document.getElementById('modalMeta');
+
+        modal.classList.add('active');
+        modalBody.innerHTML = '<div style="text-align:center; padding:30px;"><div class="spinner"></div> Loading...</div>';
+
+        try {
+            const response = await fetch(`http://localhost:8080/api/analyses/${analysisId}`);
+            if (!response.ok) throw new Error('Not found');
+            const record = await response.json();
+
+            modalTitle.textContent = `📄 ${record.filename}`;
+            modalMeta.textContent = `Analyzed: ${new Date(record.analyzed_at).toLocaleString()} • ID: ${record.id}`;
+
+            const analysis = record.analysis || {};
+            let html = createPlanPreviewHtml(
+                getRecordPreviewUrl(record),
+                record.filename,
+                record.image_filename || record.filename
+            );
+
+            // Layout
+            html += `<p><strong>Layout:</strong> <span class="badge bg-gray">${analysis.layout_type || 'Unknown'}</span></p>`;
+            if (analysis._selected_model) {
+                html += `<p><strong>Model:</strong> <span class="badge bg-blue">${formatModelLabel(analysis._selected_model)}</span></p>`;
+            }
+
+            // Visible elements
+            const elements = analysis.visible_elements || [];
+            if (elements.length > 0) {
+                html += `<h3 style="margin-bottom:8px;">🔍 Visible Elements</h3><ul style="margin-top:0;">`;
+                elements.forEach(el => { html += `<li>📦 ${el}</li>`; });
+                html += '</ul>';
+            }
+
+            // Risky areas
+            const risks = analysis.risky_areas || [];
+            if (risks.length > 0) {
+                html += `<h3 style="margin-bottom:8px; color:#922b21;">🚨 Risky Areas</h3><ul style="margin-top:0; color:#641e16;">`;
+                risks.forEach((r, i) => { html += `<li><span class="risk-index">${i+1}</span> ${r}</li>`; });
+                html += '</ul>';
+            } else {
+                html += `<p style="color:#27ae60;">✅ No risks detected</p>`;
+            }
+
+            // Dimensions grouped by category
+            const dims = analysis.dimensions || [];
+            if (dims.length > 0) {
+                html += `<h3 style="margin-bottom:12px;">📏 Summarized Dimensions</h3>`;
+                const groups = groupByCategory(dims);
+                const order = ['wall', 'height', 'plumbing', 'electrical'];
+                Object.keys(groups).forEach(k => { if (!order.includes(k)) order.push(k); });
+
+                order.forEach(cat => {
+                    if (!groups[cat]) return;
+                    const cfg = CATEGORIES[cat] || { icon: '📏', label: cat, cssClass: '' };
+                    const isInterval = (cat === 'plumbing' || cat === 'electrical');
+
+                    let badge = '';
+                    if (isInterval) badge = ` <span class="interval-badge interval-${cat}">FROM → TO</span>`;
+
+                    html += `<div class="cat-group ${cfg.cssClass}" style="margin-bottom:12px;">`;
+                    html += `<div class="cat-header">${cfg.icon} ${cfg.label}${badge}</div>`;
+                    html += `<table class="dim-table"><thead><tr>
+                        <th>Label</th><th>Value</th><th>Unit</th><th>Status</th>
+                    </tr></thead><tbody>`;
+
+                    groups[cat].forEach(d => {
+                        const status = d.isUnreadable
+                            ? '<span class="badge bg-yellow">UNREADABLE</span>'
+                            : '<span class="badge bg-green">OK</span>';
+                        const val = d.isUnreadable ? '—' : (d.expectedValue ?? '—');
+                        html += `<tr>
+                            <td><strong>${d.label || '—'}</strong></td>
+                            <td>${val}</td>
+                            <td>${d.unit || 'mm'}</td>
+                            <td>${status}</td>
+                        </tr>`;
+                    });
+
+                    html += '</tbody></table></div>';
+                });
+            }
+
+            modalBody.innerHTML = html;
+        } catch (e) {
+            modalBody.innerHTML = '<p style="color:#dc3545;">⚠️ Failed to load analysis details.</p>';
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('analysisModal').classList.remove('active');
+    }
+    document.getElementById('analysisModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // ===== Delete =====
+    async function deleteAnalysis(analysisId, filename) {
+        if (!confirm(`Delete analysis for "${filename}"?\nThis cannot be undone.`)) return;
+        try {
+            const response = await fetch(`http://localhost:8080/api/analyses/${analysisId}`, { method: 'DELETE' });
+            if (response.ok) { loadHistory(); } else { alert('Failed to delete.'); }
+        } catch (e) { alert('⚠️ Connection error.'); }
     }
 </script>
 

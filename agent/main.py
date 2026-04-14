@@ -7,9 +7,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 import uvicorn
+from contextlib import asynccontextmanager
 from api.vision_routes import router as vision_router
 
-app = FastAPI(title="Kitchen Vision Agent")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    logger.info("Kitchen Vision Agent started on port 8001.")
+    yield
+    logger.info("Kitchen Vision Agent shutting down.")
+
+app = FastAPI(title="Kitchen Vision Agent", lifespan=lifespan)
 
 # Allow requests from the Java backend and plain Phase 3 frontend.
 app.add_middleware(
@@ -22,9 +29,5 @@ app.add_middleware(
 
 app.include_router(vision_router, prefix="/api/vision", tags=["vision"])
 
-@app.on_event("startup")
-async def startup_event():
-    logger.info("Kitchen Vision Agent started.")
-
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8001, reload=True)

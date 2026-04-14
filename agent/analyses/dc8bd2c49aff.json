@@ -1,0 +1,98 @@
+{
+  "id": "dc8bd2c49aff",
+  "filename": "TYPE 4 RDC 1 2 3 (2).jpg",
+  "analyzed_at": "2026-04-03T18:46:35.890809",
+  "analysis": {
+    "layout_type": "Straight",
+    "visible_elements": [
+      "Upper cabinets (HE8072 x2, HE4072, HE4572)",
+      "Base cabinets (BE5072, BE4572)",
+      "Sink (Evier)",
+      "Range hood (HOOD762-13)",
+      "Cooktop/Hob",
+      "35mm left wall filler"
+    ],
+    "risky_areas": [
+      "35mm left wall filler is very tight — any wall deviation will cause misalignment",
+      "Sink plumbing exact center position not dimensioned — needs site verification",
+      "Hood electrical point not explicitly marked — needs site confirmation",
+      "354mm right-side section purpose unclear (tall unit, fridge, or end panel) — needs clarification",
+      "Countertop height and backsplash height not explicitly dimensioned",
+      "Left wall height 2405mm vs right side 1882+508=2390mm — possible ceiling slope or different reference points"
+    ],
+    "dimensions": [
+      {
+        "id": "wall_total_length",
+        "label": "Total wall length",
+        "expectedValue": 3060,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_height",
+        "label": "Wall height (floor to ceiling)",
+        "expectedValue": 2405,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "upper_cabinets_height",
+        "label": "Upper cabinets height",
+        "expectedValue": 510,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "height"
+      },
+      {
+        "id": "backsplash_zone_height",
+        "label": "Backsplash zone height (upper cabinet bottom to countertop)",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "countertop_height",
+        "label": "Countertop height from floor",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "plumbing_sink_from",
+        "label": "Plumbing under sink FROM (distance from left wall edge)",
+        "expectedValue": 35,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "plumbing_sink_to",
+        "label": "Plumbing under sink TO (distance from left wall edge)",
+        "expectedValue": 1250,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "hood_electrical_from",
+        "label": "Hood electrical FROM (distance from left wall edge)",
+        "expectedValue": 1250,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      },
+      {
+        "id": "hood_electrical_to",
+        "label": "Hood electrical TO (distance from left wall edge)",
+        "expectedValue": 2015,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      }
+    ]
+  }
+}

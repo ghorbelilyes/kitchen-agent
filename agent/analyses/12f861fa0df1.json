@@ -1,0 +1,117 @@
+{
+  "id": "12f861fa0df1",
+  "filename": "TYPE 4 RDC 1 2 3 (2).jpg",
+  "analyzed_at": "2026-04-08T17:45:24.432486",
+  "analysis": {
+    "layout_type": "Straight",
+    "visible_elements": [
+      "base cabinets",
+      "upper cabinets",
+      "sink",
+      "range hood",
+      "countertop",
+      "side walls/end returns",
+      "filler panels"
+    ],
+    "risky_areas": [
+      "Very small left filler/end space near wall (35 mm) may be insufficient for wall tolerance and door clearance",
+      "Hood zone alignment must match real electrical point exactly",
+      "Sink plumbing must align with sink base zone; re-measure before production",
+      "Asymmetrical left/right wall depths suggest site condition complexity",
+      "No clearly readable countertop height from floor",
+      "Backsplash clearance is not clearly readable"
+    ],
+    "dimensions": [
+      {
+        "id": "wall_left_total_length",
+        "label": "Left wall total length",
+        "expectedValue": 2405,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_right_total_length",
+        "label": "Right wall total length",
+        "expectedValue": 2887,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_back_total_length",
+        "label": "Top/back wall total length",
+        "expectedValue": 3060,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "wall"
+      },
+      {
+        "id": "wall_height",
+        "label": "Wall height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "wall"
+      },
+      {
+        "id": "upper_cabinets_height",
+        "label": "Upper cabinets height",
+        "expectedValue": 510,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "height"
+      },
+      {
+        "id": "backsplash_zone_height",
+        "label": "Backsplash zone height",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "countertop_height_from_floor",
+        "label": "Countertop height from floor",
+        "expectedValue": null,
+        "unit": "mm",
+        "isUnreadable": true,
+        "category": "height"
+      },
+      {
+        "id": "plumbing_under_sink_from",
+        "label": "Plumbing under sink FROM",
+        "expectedValue": 35,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "plumbing_under_sink_to",
+        "label": "Plumbing under sink TO",
+        "expectedValue": 1250,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "plumbing"
+      },
+      {
+        "id": "hood_electrical_from",
+        "label": "Hood electrical FROM",
+        "expectedValue": 2010,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      },
+      {
+        "id": "hood_electrical_to",
+        "label": "Hood electrical TO",
+        "expectedValue": 2610,
+        "unit": "mm",
+        "isUnreadable": false,
+        "category": "electrical"
+      }
+    ],
+    "_selected_model": "openai-codex/gpt-5.4"
+  },
+  "image_filename": "e50ab6af-c6d7-4d67-9a24-7c6d8f2faf99.jpg"
+}
